@@ -1,0 +1,70 @@
+{
+  "version": "1.0",
+  "routes": [
+    {
+      "path": "/auth/login",
+      "method": "POST",
+      "response": {
+        "status": 200,
+        "body": {
+          "token": "mock_jwt_token",
+          "expiresIn": 3600
+        }
+      }
+    },
+    {
+      "path": "/posts",
+      "method": "POST",
+      "response": {
+        "status": 201,
+        "body": {
+          "id": "post_mock_123",
+          "content": "{{request.body.content}}",
+          "author": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+          "createdAt": "2023-11-15T12:00:00Z"
+        }
+      }
+    },
+    {
+      "path": "/feed",
+      "method": "GET",
+      "response": {
+        "status": 200,
+        "body": {
+          "posts": [
+            {
+              "id": "post_1",
+              "content": "Sample post 1",
+              "author": "0x123...",
+              "createdAt": "2023-11-14T10:00:00Z"
+            },
+            {
+              "id": "post_2",
+              "content": "Sample post 2",
+              "author": "0x456...",
+              "createdAt": "2023-11-14T11:00:00Z"
+            }
+          ],
+          "page": 1,
+          "totalPages": 5
+        }
+      }
+    },
+    {
+      "path": "/ai/summarize",
+      "method": "POST",
+      "response": {
+        "status": 200,
+        "body": {
+          "summary": "This is a generated summary of the input content.",
+          "length": "medium"
+        }
+      }
+    }
+  ],
+  "settings": {
+    "port": 3000,
+    "delay": 200,
+    "cors": true
+  }
+}
